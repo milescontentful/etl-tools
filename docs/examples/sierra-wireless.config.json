@@ -1,0 +1,16 @@
+{
+  "name": "Sierra Wireless Demo",
+  "urls": [
+    { "url": "https://www.sierrawireless.com", "type": "homepage" },
+    { "url": "https://www.sierrawireless.com/devices/xr-series/xr60/", "type": "product" },
+    { "url": "https://www.sierrawireless.com/devices/xr-series/xr80/", "type": "product" },
+    { "url": "https://www.sierrawireless.com/devices/xr-series/xr90/", "type": "product" },
+    { "url": "https://www.sierrawireless.com/devices/rx-series/rx55/", "type": "product" }
+  ],
+  "options": {
+    "adapter": "cheerio",
+    "downloadAssets": true,
+    "extractBranding": true,
+    "maxDepth": 1
+  }
+}

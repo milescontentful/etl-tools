@@ -1,0 +1,21 @@
+{
+  "name": "etl-tools",
+  "version": "0.1.0",
+  "description": "Contentful ETL toolkit for Solution Engineers — harvest prospect websites, load into Contentful, preview with branding",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "harvest": "npm run cli -- harvest",
+    "load": "npm run cli -- load",
+    "enrich": "npm run cli -- enrich",
+    "analyze": "npm run cli -- analyze",
+    "preview": "npm run cli -- preview",
+    "create-demo": "npm run cli -- create-demo",
+    "cli": "node packages/shared/dist/cli.js"
+  },
+  "keywords": ["contentful", "etl", "scraping", "demo", "solution-engineering"],
+  "license": "MIT"
+}

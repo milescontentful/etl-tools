@@ -1,0 +1,25 @@
+{
+  "name": "@etl-tools/shared",
+  "version": "0.1.0",
+  "description": "Shared utilities, types, and Contentful client for ETL tools",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "etl": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "contentful-management": "^11.44.0",
+    "dotenv": "^17.2.3",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "commander": "^13.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  }
+}

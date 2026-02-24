@@ -1,0 +1,91 @@
+{
+  "aiActions": [
+    {
+      "name": "Generate SEO Metadata",
+      "description": "Auto-generate SEO metadata (meta title, description, keywords, Open Graph) from product or page content. Designed for bulk operations at scale.",
+      "instruction": {
+        "template": "You are an expert SEO specialist. Your task is to generate optimized SEO metadata for the following content.\n\n## Input Content\n**Title:** {{var.title}}\n**Description:** {{var.description}}\n\n## Output Requirements\n\nGenerate the following SEO fields in a structured format:\n\n### Meta Title\n- Maximum 60 characters\n- Include primary keyword and brand when space allows\n- Make it compelling and click-worthy\n\n### Meta Description\n- Maximum 155 characters\n- Summarize the key value proposition\n- Include a subtle call-to-action\n- Make it compelling for search results\n\n### Keywords\n- Provide 5-8 relevant keywords\n- Include product name, category, and use cases\n- Mix of head terms and long-tail keywords\n- Separate with commas\n\n### Open Graph Title\n- Optimized for social sharing\n- Can be slightly longer than meta title (up to 70 chars)\n- More conversational tone\n\n### Open Graph Description\n- Optimized for social sharing\n- Up to 200 characters\n- Engaging and shareable\n\n## Output Format\nProvide ONLY the generated content in this exact format:\n\nMETA_TITLE: [your meta title]\nMETA_DESCRIPTION: [your meta description]\nKEYWORDS: [keyword1, keyword2, keyword3, ...]\nOG_TITLE: [your og title]\nOG_DESCRIPTION: [your og description]",
+        "variables": [
+          {
+            "id": "title",
+            "name": "Content Title",
+            "description": "The title of the product or page",
+            "type": "Text"
+          },
+          {
+            "id": "description",
+            "name": "Content Description",
+            "description": "The main description or body content of the product/page",
+            "type": "Text"
+          }
+        ]
+      },
+      "configuration": {
+        "modelType": "anthropic.claude-4-5-sonnet",
+        "modelTemperature": 0.2
+      }
+    },
+    {
+      "name": "Generate AI Discovery Content",
+      "description": "Auto-generate AI-optimized content (GEO) for LLM/AI discoverability. Creates summaries, use cases, search intents, differentiators, and FAQs from product data. Designed for bulk operations at scale.",
+      "instruction": {
+        "template": "You are an AI content optimization specialist. Your task is to generate AI-optimized content that helps AI assistants (like ChatGPT, Perplexity, Claude) accurately discover, describe, and recommend this product.\n\n## Input Product Data\n**Product Name:** {{var.productName}}\n**Product Description:** {{var.productDescription}}\n**Product Category:** {{var.productCategory}}\n\n## Output Requirements\n\nGenerate comprehensive AI Discovery (GEO) content in the following format:\n\n### AI Summary\nA concise 2-3 sentence overview that an AI assistant would use to describe this product. Focus on what it is, who it's for, and its primary value proposition.\n\n### Best For (Use Cases)\nList 3-5 specific use cases or audiences this product serves best. Be specific.\n\n### Search Intents\nList 4-6 natural language queries a user might ask an AI assistant that this product answers.\n\n### Key Points\nList 4-6 key features or benefits that differentiate this product. Focus on measurable or concrete advantages.\n\n### Differentiators\nList 3-4 unique selling points that set this apart from competitors.\n\n### Competitors\nList 2-4 competitor products or brands that serve similar use cases.\n\n### FAQ\nProvide 2-3 common questions and concise answers about this product.\n\n## Output Format\nProvide the content in this exact format:\n\nAI_SUMMARY: [your summary]\n\nBEST_FOR:\n- [use case 1]\n- [use case 2]\n- [use case 3]\n\nSEARCH_INTENTS:\n- [intent 1]\n- [intent 2]\n- [intent 3]\n- [intent 4]\n\nKEY_POINTS:\n- [point 1]\n- [point 2]\n- [point 3]\n- [point 4]\n\nDIFFERENTIATORS:\n- [diff 1]\n- [diff 2]\n- [diff 3]\n\nCOMPETITORS:\n- [competitor 1]\n- [competitor 2]\n\nFAQ:\nQ: [question 1]\nA: [answer 1]\n\nQ: [question 2]\nA: [answer 2]",
+        "variables": [
+          {
+            "id": "productName",
+            "name": "Product Name",
+            "description": "The name of the product",
+            "type": "Text"
+          },
+          {
+            "id": "productDescription",
+            "name": "Product Description",
+            "description": "Detailed description of the product, its features, and capabilities",
+            "type": "Text"
+          },
+          {
+            "id": "productCategory",
+            "name": "Product Category",
+            "description": "The category this product belongs to",
+            "type": "Text"
+          }
+        ]
+      },
+      "configuration": {
+        "modelType": "anthropic.claude-4-5-sonnet",
+        "modelTemperature": 0.4
+      }
+    },
+    {
+      "name": "Translate",
+      "description": "Convert text between languages efficiently with cultural adaptation.",
+      "instruction": {
+        "template": "You are a professional translator skilled in accurately converting content from one language to another while ensuring cultural adaptation and localization. Your task is to translate the provided content from its original language into the specified target locale.\n\nThe original language is {{var.sourceLocale}} and the target language for translation: {{var.targetLocale}}\n\nEnsure that:\n- The translation is accurate and contextually appropriate for the target locale.\n- Cultural differences, idioms, and region-specific expressions are properly adapted.\n- The structure and intent of the original content remain intact.\n- No additional information is added or removed—translate exactly what is provided.\n\nDeliver the translation in a clear, natural, and fluent manner so it reads as if originally written in the target language.\n\nContent to translate: {{var.content}}",
+        "variables": [
+          {
+            "id": "sourceLocale",
+            "name": "Source Locale",
+            "description": "Source language or region for the translation",
+            "type": "Text"
+          },
+          {
+            "id": "targetLocale",
+            "name": "Target Locale",
+            "description": "Target language or region for the translation",
+            "type": "Text"
+          },
+          {
+            "id": "content",
+            "name": "Content",
+            "description": "The content to translate",
+            "type": "Text"
+          }
+        ]
+      },
+      "configuration": {
+        "modelType": "anthropic.claude-4-5-sonnet",
+        "modelTemperature": 0.1
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "SaaS Company Demo",
+  "urls": [
+    { "url": "https://example-saas.com", "type": "homepage" },
+    { "url": "https://example-saas.com/features", "type": "page" },
+    { "url": "https://example-saas.com/pricing", "type": "page" },
+    { "url": "https://example-saas.com/about", "type": "page" }
+  ],
+  "options": {
+    "adapter": "cheerio",
+    "downloadAssets": true,
+    "extractBranding": true,
+    "maxDepth": 1
+  }
+}

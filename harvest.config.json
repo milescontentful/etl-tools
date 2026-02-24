@@ -1,0 +1,12 @@
+{
+  "name": "Example Demo",
+  "urls": [
+    { "url": "https://example.com", "type": "homepage" }
+  ],
+  "options": {
+    "adapter": "cheerio",
+    "downloadAssets": true,
+    "extractBranding": true,
+    "maxDepth": 1
+  }
+}
