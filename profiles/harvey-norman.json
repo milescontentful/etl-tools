@@ -1,0 +1,61 @@
+{
+  "prospect": {
+    "name": "Harvey Norman",
+    "website": "https://www.harveynorman.com.au/",
+    "industry": "Retail / E-commerce",
+    "market": "Australia",
+    "notes": "Large Australian electronics and furniture retailer. JS-heavy e-commerce site — requires Playwright adapter."
+  },
+  "sales": {
+    "stage": "custom-demo",
+    "methodology": "MEDDPICC",
+    "se": "",
+    "notes": ""
+  },
+  "harvest": {
+    "configFile": "docs/examples/harvey-norman.config.json",
+    "adapter": "playwright",
+    "lastHarvested": "2026-02-23",
+    "pagesHarvested": 1,
+    "imagesFound": 66,
+    "productImagesFound": 10
+  },
+  "contentful": {
+    "spaceId": "4vlxktnke41x",
+    "environmentId": "master",
+    "entriesCreated": 3,
+    "assetsUploaded": 8,
+    "contentTypes": 13
+  },
+  "branding": {
+    "primaryColor": "#005B9C",
+    "secondaryColor": "#373737",
+    "headingFont": "Lato",
+    "bodyFont": "Arial",
+    "borderRadius": "small",
+    "logoUrl": "https://www.harveynorman.com.au/assets/hnau/images/hn-logo.svg",
+    "faviconUrl": "",
+    "heroImageUrl": "https://www.harveynorman.com.au/media/wysiwyg/2026_Web_Dropship_Banner_Feb_Delivery.jpg"
+  },
+  "pageSections": {
+    "description": "Sections observed on homepage (for manual content creation reference)",
+    "sections": [
+      { "name": "Header", "type": "siteSettings", "notes": "Search bar, account icons, cart. Hamburger menu left." },
+      { "name": "Navigation", "type": "navigationItem", "notes": "Hamburger menu with categories. Right-aligned order status, catalogue, stores." },
+      { "name": "Hero Carousel", "type": "heroSection + carousel", "notes": "Rotating banners — Latitude credit card promo, Winter Olympics 2026." },
+      { "name": "Category Tiles", "type": "cardGrid", "notes": "4 tiles: Google Pixel, Bonus Gift Cards, Future of TV, Furniture." },
+      { "name": "Featured Products", "type": "cardGrid", "notes": "Today's featured products — 4 product cards with prices and ratings." },
+      { "name": "Product Rows", "type": "section + sectionItem", "notes": "~6 rows of 4 products each: computers, cameras, audio, gaming, appliances, furniture." },
+      { "name": "Services", "type": "cardGrid", "notes": "4 service cards: Click & Collect, delivery, finance, trade-in." },
+      { "name": "Brand Partners", "type": "section", "notes": "Logo strip: Optus, Microsoft, Sonos, Google, Apple, Samsung, LG, Dyson, Breville, Electrolux." },
+      { "name": "Footer Navigation", "type": "navigationItem", "notes": "Multi-column footer with links." }
+    ]
+  },
+  "nextSteps": [
+    "Add 3-4 product page URLs to harvest config for deeper product content",
+    "Create product entries manually from harvested product images",
+    "Build navigation structure from observed menu items",
+    "Set up AI Actions for SEO/GEO generation",
+    "Configure preview app with HN branding"
+  ]
+}

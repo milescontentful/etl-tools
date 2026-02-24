@@ -54,15 +54,55 @@ export async function loadHarvestOutput(
     const spin = log.spinner('Creating Brand Settings...');
     try {
       const b = harvestOutput.branding;
-      await createAndPublishEntry(client, spaceId, environmentId, 'brandSettings', {
+      const brandFields: Record<string, unknown> = {
         internalName: localize(`${harvestOutput.config.name} Brand`),
         primaryColor: localize(b.primaryColor || '#0066CC'),
         secondaryColor: localize(b.secondaryColor || '#1A1A2E'),
         headingFont: localize(b.headingFont || 'Inter'),
         bodyFont: localize(b.bodyFont || 'Inter'),
         borderRadius: localize(b.borderRadius || 'small'),
-      });
-      spin.succeed('Brand Settings created');
+      };
+
+      if (b.accentColor) {
+        brandFields.accentColor = localize(b.accentColor);
+      }
+      if (b.neutralLight) {
+        brandFields.neutralLight = localize(b.neutralLight);
+      }
+      if (b.neutralDark) {
+        brandFields.neutralDark = localize(b.neutralDark);
+      }
+
+      if (b.logoUrl) {
+        try {
+          const logoAssetId = await uploadAsset(client, spaceId, environmentId, {
+            title: `${harvestOutput.config.name} — Logo`,
+            fileName: b.logoUrl.split('/').pop()?.split('?')[0] || 'logo.png',
+            contentType: b.logoUrl.includes('.svg') ? 'image/svg+xml' : 'image/png',
+            uploadUrl: b.logoUrl,
+          });
+          brandFields.logo = localize(makeLink(logoAssetId, 'Asset'));
+        } catch {
+          log.dim('Could not upload logo asset');
+        }
+      }
+
+      if (b.faviconUrl) {
+        try {
+          const faviconAssetId = await uploadAsset(client, spaceId, environmentId, {
+            title: `${harvestOutput.config.name} — Favicon`,
+            fileName: b.faviconUrl.split('/').pop()?.split('?')[0] || 'favicon.ico',
+            contentType: 'image/x-icon',
+            uploadUrl: b.faviconUrl,
+          });
+          brandFields.favicon = localize(makeLink(faviconAssetId, 'Asset'));
+        } catch {
+          log.dim('Could not upload favicon asset');
+        }
+      }
+
+      await createAndPublishEntry(client, spaceId, environmentId, 'brandSettings', brandFields);
+      spin.succeed('Brand Settings created (full palette + logo + favicon)');
     } catch (err) {
       spin.warn(`Brand Settings: ${(err as Error).message}`);
     }

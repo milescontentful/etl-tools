@@ -16,6 +16,15 @@
     "create-demo": "npm run cli -- create-demo",
     "cli": "node packages/shared/dist/cli.js"
   },
-  "keywords": ["contentful", "etl", "scraping", "demo", "solution-engineering"],
-  "license": "MIT"
+  "keywords": [
+    "contentful",
+    "etl",
+    "scraping",
+    "demo",
+    "solution-engineering"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "tsx": "^4.21.0"
+  }
 }

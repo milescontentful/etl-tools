@@ -1,0 +1,12 @@
+{
+  "name": "Harvey Norman Demo",
+  "urls": [
+    { "url": "https://www.harveynorman.com.au/", "type": "homepage" }
+  ],
+  "options": {
+    "adapter": "playwright",
+    "downloadAssets": true,
+    "extractBranding": true,
+    "maxDepth": 1
+  }
+}

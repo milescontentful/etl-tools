@@ -11,9 +11,11 @@ import {
 } from '@etl-tools/shared';
 import { log } from '@etl-tools/shared';
 import { scrapeWithCheerio } from './adapters/cheerio';
+import { scrapeWithPlaywright } from './adapters/playwright';
 import { categorizeImage } from './extractors/assets';
 
 export { scrapeWithCheerio } from './adapters/cheerio';
+export { scrapeWithPlaywright } from './adapters/playwright';
 export * from './extractors';
 
 export async function harvest(config: HarvestConfig, outputDir: string): Promise<HarvestOutput> {
@@ -30,9 +32,12 @@ export async function harvest(config: HarvestConfig, outputDir: string): Promise
   fs.mkdirSync(assetsDir, { recursive: true });
 
   for (const urlEntry of config.urls) {
-    const spin = log.spinner(`Scraping ${urlEntry.url}`);
+    const adapter = config.options?.adapter || 'cheerio';
+    const spin = log.spinner(`Scraping ${urlEntry.url} (${adapter})`);
     try {
-      const page = await scrapeWithCheerio(urlEntry.url);
+      const page = adapter === 'playwright'
+        ? await scrapeWithPlaywright(urlEntry.url)
+        : await scrapeWithCheerio(urlEntry.url);
       pages.push(page);
 
       const pageFile = path.join(pagesDir, `${page.slug.replace(/\//g, '_')}.json`);
