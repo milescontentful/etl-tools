@@ -16,6 +16,8 @@ import { categorizeImage } from './extractors/assets';
 
 export { scrapeWithCheerio } from './adapters/cheerio';
 export { scrapeWithPlaywright } from './adapters/playwright';
+export { detectStrategy, formatDetectionReport } from './auto-detect';
+export { smartHarvest } from './smart-harvest';
 export * from './extractors';
 
 export async function harvest(config: HarvestConfig, outputDir: string): Promise<HarvestOutput> {
