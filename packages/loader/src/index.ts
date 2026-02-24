@@ -17,3 +17,4 @@ export {
   createGeoEntry,
 } from './ai-enrichment';
 export { loadHarvestOutput, type LoadOptions, type PageLoadResult } from './page-loader';
+export { loadStructuredData, type StructuredLoadResult } from './structured-loader';

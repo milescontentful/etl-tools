@@ -5,6 +5,7 @@ import { extractBranding } from '../extractors/branding';
 import { extractTaxonomy } from '../extractors/taxonomy';
 import { extractSections } from '../extractors/sections';
 import { extractImages } from '../extractors/assets';
+import { extractNextData } from '../extractors/next-data';
 import { makeAbsolute } from '../extractors/helpers';
 
 export interface PlaywrightOptions {
@@ -122,6 +123,7 @@ export async function scrapeWithPlaywright(
     const taxonomyHints = extractTaxonomy(html, $, url);
     const sections = extractSections($);
     const images = extractImages($, baseUrl);
+    const structuredData = extractNextData(html, baseUrl);
 
     await browser.close();
 
@@ -144,6 +146,7 @@ export async function scrapeWithPlaywright(
       sections,
       branding,
       taxonomyHints,
+      structuredData,
     };
   } catch (err) {
     await browser.close();

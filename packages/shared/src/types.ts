@@ -69,6 +69,61 @@ export interface ScrapedPage {
   sections?: ScrapedSection[];
   branding?: ScrapedBranding;
   taxonomyHints?: TaxonomyHints;
+  structuredData?: NextDataPayload;
+}
+
+// =============================================
+// __NEXT_DATA__ structured extraction types
+// =============================================
+
+export interface NextDataPayload {
+  source: 'next' | 'nuxt' | 'gatsby' | 'unknown';
+  products: NextDataProduct[];
+  navigation: NextDataNavItem[];
+  heroBanners: NextDataHeroBanner[];
+  footerLinks: NextDataNavItem[];
+  brandLogos: NextDataBrandLogo[];
+  raw?: Record<string, unknown>;
+}
+
+export interface NextDataProduct {
+  name: string;
+  sku: string;
+  slug: string;
+  price: number;
+  originalPrice?: number;
+  currency: string;
+  imageUrl: string;
+  imageAlt: string;
+  rating?: number;
+  reviewCount?: number;
+  offerFlag?: string;
+  offerText?: string;
+  shortDescription?: string;
+  url: string;
+  category?: string;
+}
+
+export interface NextDataNavItem {
+  id: string;
+  label: string;
+  url: string;
+  level: number;
+  children?: NextDataNavItem[];
+}
+
+export interface NextDataHeroBanner {
+  headline: string;
+  imageDesktop: string;
+  imageMobile?: string;
+  linkUrl: string;
+  altText: string;
+}
+
+export interface NextDataBrandLogo {
+  name: string;
+  logoUrl: string;
+  linkUrl: string;
 }
 
 export interface HarvestOutput {
